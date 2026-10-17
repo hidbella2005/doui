@@ -1,0 +1,3 @@
+export default function SettingsPage() {
+  return <main className="page-shell simple-page"><p className="eyebrow">Control center</p><h1>Your data, your choices.</h1><p className="lead">Production settings will include consent history, notification choices, session security, data export, account deletion, and support for privacy requests.</p><div className="settings-list"><div><strong>Consent records</strong><span>View the versions you accepted and withdraw optional consent.</span></div><div><strong>Security</strong><span>Manage sessions, MFA, and sign-in alerts.</span></div><div><strong>Data requests</strong><span>Request an export or deletion through the verified account flow.</span></div></div></main>;
+}
