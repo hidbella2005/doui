@@ -2,7 +2,7 @@
 
 Doui is an original mental-wellbeing platform concept for Morocco, focused on helping people discover qualified therapists, book sessions, and communicate safely.
 
-> Doui is an independent product. It does not copy BetterHelp's code, content, branding, imagery, or exact interface.
+
 
 ## MVP goals
 
