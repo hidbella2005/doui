@@ -1,0 +1,9 @@
+{
+  "name": "Doui",
+  "short_name": "Doui",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9f5ee",
+  "theme_color": "#427b77",
+  "icons": [{ "src": "/doui-mark.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
