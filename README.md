@@ -14,56 +14,27 @@ Doui is an original mental-wellbeing platform concept for Morocco, focused on he
 - Role-aware admin workflows
 - Morocco-first compliance documentation
 
-## Planned stack
+## Stack
 
-- Next.js + TypeScript
-- Tailwind CSS
-- Node.js route handlers
+- Next.js 14 + TypeScript
 - PostgreSQL + Prisma
-- Auth.js-compatible authentication boundary
-- Zod validation
-- WebSocket/provider boundary for messaging
+- Auth.js-compatible credentials authentication
+- bcrypt password hashing
+- Zod request validation
+- Rule-based explainable matching
 
-## Repository structure
+## Database and authentication setup
 
-```text
-app/
-  (marketing)/page.tsx                 # Landing page
-  onboarding/page.tsx                  # Consent and questionnaire flow
-  therapists/page.tsx                  # Search and matched therapists
-  therapists/[id]/page.tsx             # Therapist profile
-  booking/[therapistId]/page.tsx       # Session booking
-  dashboard/page.tsx                   # Client dashboard
-  dashboard/messages/page.tsx          # Secure messaging UI
-  dashboard/settings/page.tsx          # Privacy and account settings
-  admin/page.tsx                       # Admin overview
-  api/matching/route.ts                # Explainable matching endpoint
-  api/bookings/route.ts                # Booking endpoint boundary
-  api/messages/route.ts                # Messaging endpoint boundary
-components/
-  brand/                               # Doui logo and identity components
-  onboarding/                          # Questionnaire components
-  therapists/                          # Cards, filters, profile blocks
-  booking/                             # Availability and booking components
-  messaging/                           # Conversation UI components
-  ui/                                  # Accessible primitives
-lib/
-  matching/                            # Matching rules and explanations
-  validation/                          # Zod schemas
-  security/                            # Consent, authorization, redaction boundaries
-  db/                                  # Prisma client boundary
-  mock-data.ts                         # Safe demo data only
-prisma/
-  schema.prisma                        # Users, therapists, sessions, messages, subscriptions
-public/
-  doui-mark.svg                        # Original Doui mark
-  doui-wordmark.svg                    # Original wordmark
-  manifest.webmanifest
- docs/
-  architecture.md                      # Product and data model decisions
-  compliance-morocco.md                # Morocco-first compliance checklist
-  betterhelp-inspiration-notes.md      # High-level public-flow observations only
+```bash
+cp .env.example .env
+npm install
+npm run db:generate
+npm run db:migrate -- --name init
+npm run dev
+```
 
-## Status
+See [docs/authentication.md](docs/authentication.md) for auth setup and production hardening requirements. See [docs/compliance-morocco.md](docs/compliance-morocco.md) before handling real health data.
 
-Initial architecture and file structure are defined. The UI and API layers will be added incrementally with demo-safe data before production integrations.
+## Current status
+
+The repository includes the PostgreSQL/Prisma data model, registration endpoint, credentials sign-in boundary, role-aware middleware, protected dashboard/admin routes, and the original demo UI. Booking and messaging remain disabled until their security and compliance integrations are implemented.
