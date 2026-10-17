@@ -1,0 +1,9 @@
+export function DouiMark() {
+  return (
+    <svg className="doui-mark" viewBox="0 0 48 48" role="img" aria-label="Doui mark">
+      <path d="M24 5c10.5 0 19 7.9 19 17.7S34.5 40.4 24 40.4c-3.4 0-6.6-.8-9.3-2.2L7 41l2.1-8.2A17 17 0 0 1 5 22.7C5 12.9 13.5 5 24 5Z" fill="currentColor" />
+      <path d="M15.5 23.3c2.2-2.8 5.1-4.2 8.5-4.2s6.3 1.4 8.5 4.2c-2.2 2.8-5.1 4.2-8.5 4.2s-6.3-1.4-8.5-4.2Z" fill="#f9f5ee" />
+      <circle cx="24" cy="23.3" r="2.8" fill="currentColor" />
+    </svg>
+  );
+}
