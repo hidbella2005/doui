@@ -1,6 +1,13 @@
 import { Therapist } from '../mock-data';
+import { z } from 'zod';
 
 export type MatchingAnswers = { concern?: string; language?: string; format?: string };
+
+export const matchingAnswersSchema = z.object({
+  concern: z.string().trim().max(200).optional(),
+  language: z.string().trim().max(100).optional(),
+  format: z.string().trim().max(100).optional(),
+});
 
 export function matchTherapists(answers: MatchingAnswers, profiles: Therapist[]) {
   return profiles.map((therapist) => {
