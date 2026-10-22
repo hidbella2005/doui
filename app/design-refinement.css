@@ -114,6 +114,129 @@ body::before {
   transition: transform .5s ease, box-shadow .5s ease;
 }
 
+.dashboard-intro {
+  color: var(--muted);
+  margin: 18px 0 0;
+  font-size: 17px;
+}
+
+.dashboard-journey {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.dashboard-journey > div:first-child {
+  max-width: 470px;
+}
+
+.dashboard-journey > div:first-child p:not(.eyebrow) {
+  color: #d7e6df;
+  max-width: 380px;
+  line-height: 1.5;
+}
+
+.dashboard-journey .button-light {
+  align-self: flex-start;
+  background: var(--cream);
+  color: var(--teal-dark);
+}
+
+.dashboard-journey .button-light:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+
+.journey-progress {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, .18);
+}
+
+.journey-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--coral);
+}
+
+.journey-meta {
+  display: flex;
+  justify-content: space-between;
+  color: #b3d1c7;
+  font-size: 12px;
+}
+
+.card-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.dashboard-icon,
+.privacy-dot {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 50%;
+  background: #eef5f0;
+  color: var(--teal-dark);
+  font-size: 20px;
+}
+
+.privacy-dot {
+  width: 12px;
+  height: 12px;
+  margin: 8px 10px 0 0;
+  background: #76aa91;
+  box-shadow: 0 0 0 5px #e3f0e7;
+}
+
+.password-input-wrap {
+  position: relative;
+  display: block;
+}
+
+.password-input-wrap input {
+  width: 100%;
+  padding-right: 48px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border: 0;
+  border-radius: 50%;
+  place-items: center;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.password-toggle:hover {
+  background: #eef5f0;
+  color: var(--teal-dark);
+}
+
+.password-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
 .hero-art:hover {
   transform: translateY(-6px) rotate(.5deg);
   box-shadow: 0 28px 70px rgba(37, 70, 62, .14);
