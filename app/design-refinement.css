@@ -237,6 +237,140 @@ body::before {
   stroke-width: 1.7;
 }
 
+.auth-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(400px, 1.1fr);
+  gap: clamp(50px, 8vw, 120px);
+  align-items: center;
+  max-width: 1050px;
+  margin: 40px auto 0;
+}
+
+.auth-intro h1 {
+  max-width: 520px;
+  margin: 0 0 24px;
+  font-size: clamp(48px, 6vw, 76px);
+  line-height: .97;
+  letter-spacing: -.07em;
+}
+
+.auth-intro > p:not(.eyebrow) {
+  max-width: 420px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.auth-promise {
+  display: flex;
+  gap: 12px;
+  max-width: 390px;
+  margin-top: 38px;
+  color: var(--teal-dark);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.auth-promise span:first-child {
+  color: var(--coral);
+  font-size: 20px;
+}
+
+.auth-card {
+  max-width: none;
+  padding: clamp(30px, 5vw, 54px);
+}
+
+.auth-card h2 {
+  margin: 0 0 10px;
+  font-size: 38px;
+  letter-spacing: -.06em;
+}
+
+.auth-card-intro {
+  margin: 0 0 28px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.auth-card form {
+  display: grid;
+  gap: 17px;
+}
+
+.auth-card label > span:first-child {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.auth-card input[type="text"],
+.auth-card input[type="email"],
+.auth-card input[type="password"] {
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+
+.auth-card input:focus {
+  outline: 3px solid rgba(66, 123, 119, .18);
+  border-color: var(--teal);
+}
+
+.password-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: -7px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.password-checks span {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.password-checks .valid {
+  color: var(--teal-dark);
+}
+
+.auth-consent {
+  margin: 3px 0 0;
+  font-size: 12px;
+}
+
+.form-error {
+  margin: 0;
+  color: #a9443e;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.auth-switch {
+  margin: 24px 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.auth-switch a {
+  color: var(--teal-dark);
+  font-weight: 700;
+}
+
 .hero-art:hover {
   transform: translateY(-6px) rotate(.5deg);
   box-shadow: 0 28px 70px rgba(37, 70, 62, .14);
@@ -261,6 +395,168 @@ body::before {
   transition: transform .25s ease, box-shadow .25s ease;
 }
 
+.step-grid {
+  perspective: 1200px;
+}
+
+.step-card {
+  position: relative;
+  min-height: 330px;
+  overflow: hidden;
+  border: 1px solid rgba(66, 123, 119, .12);
+  border-radius: 24px;
+  background: rgba(255, 253, 250, .66);
+  box-shadow: 0 16px 36px rgba(37, 70, 62, .06);
+  transform-style: preserve-3d;
+}
+
+.step-card:hover {
+  transform: rotateX(3deg) rotateY(-4deg) translateY(-6px);
+  box-shadow: 18px 24px 42px rgba(37, 70, 62, .13);
+}
+
+.step-card > span,
+.step-card > p {
+  position: relative;
+  z-index: 2;
+  margin-left: 24px;
+}
+
+.step-card > span {
+  display: block;
+  color: var(--coral);
+}
+
+.step-card > p {
+  margin-top: 22px;
+}
+
+.step-scene {
+  position: relative;
+  height: 178px;
+  margin: -1px -1px 18px;
+  overflow: hidden;
+  border-radius: 24px 24px 42% 42%;
+  background: linear-gradient(145deg, #e2eee8, #c4dcd1);
+  perspective: 600px;
+}
+
+.step-card-2 .step-scene {
+  background: linear-gradient(145deg, #f4e4d8, #eac0ad);
+}
+
+.step-card-3 .step-scene {
+  background: linear-gradient(145deg, #e9e5d3, #d8d1ac);
+}
+
+.step-object {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110px;
+  height: 110px;
+  transform: translate(-50%, -50%) rotateX(58deg) rotateZ(-25deg);
+  transform-style: preserve-3d;
+  transition: transform .5s ease;
+}
+
+.step-card:hover .step-object {
+  transform: translate(-50%, -50%) rotateX(54deg) rotateZ(12deg) translateZ(12px);
+}
+
+.object-core,
+.object-orbit,
+.object-ring,
+.object-profile,
+.object-path,
+.object-sun {
+  position: absolute;
+  display: block;
+}
+
+.object-core {
+  top: 34px;
+  left: 34px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--teal-dark);
+  box-shadow: 8px 8px 0 rgba(40, 90, 88, .17), 0 0 25px rgba(40, 90, 88, .28);
+}
+
+.object-orbit {
+  top: 21px;
+  left: 10px;
+  width: 90px;
+  height: 70px;
+  border: 2px solid rgba(40, 90, 88, .54);
+  border-radius: 50%;
+  transform: rotateX(65deg);
+}
+
+.orbit-two {
+  transform: rotateX(65deg) rotateZ(60deg);
+  border-color: rgba(232, 137, 111, .7);
+}
+
+.object-profile {
+  top: 18px;
+  left: 37px;
+  width: 40px;
+  height: 72px;
+  border-radius: 50% 50% 45% 45%;
+  background: var(--teal);
+  box-shadow: 10px 10px 0 rgba(40, 90, 88, .2);
+}
+
+.object-ring {
+  top: 29px;
+  left: 18px;
+  width: 78px;
+  height: 54px;
+  border: 2px solid rgba(255, 253, 250, .9);
+  border-radius: 50%;
+  transform: rotateX(58deg);
+}
+
+.object-spark {
+  position: absolute;
+  top: 4px;
+  right: 3px;
+  color: var(--coral);
+  font-size: 28px;
+  transform: translateZ(28px);
+}
+
+.object-path {
+  bottom: 24px;
+  left: 11px;
+  width: 92px;
+  height: 24px;
+  border: 3px solid var(--teal-dark);
+  border-top: 0;
+  border-radius: 0 0 50% 50%;
+  transform: rotate(-23deg);
+}
+
+.path-two {
+  bottom: 42px;
+  left: 30px;
+  width: 70px;
+  border-color: var(--coral);
+  transform: rotate(28deg);
+}
+
+.object-sun {
+  top: 9px;
+  right: 7px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 7px 7px 0 rgba(232, 137, 111, .2);
+}
+
 .therapist-card:hover,
 .dashboard-card:not(.large):hover,
 .step-card:hover {
@@ -269,6 +565,19 @@ body::before {
 }
 
 @media (max-width: 700px) {
+  .auth-layout {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .auth-intro {
+    margin-bottom: 35px;
+  }
+
+  .auth-intro h1 {
+    font-size: 48px;
+  }
+
   .site-header {
     top: 6px;
     margin: 0 12px;
@@ -281,6 +590,10 @@ body::before {
 
   .nav-links a:not(.nav-cta) {
     display: none;
+  }
+
+  .step-card:hover {
+    transform: translateY(-4px);
   }
 
   .cultural-word {

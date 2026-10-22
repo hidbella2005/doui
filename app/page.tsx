@@ -29,7 +29,7 @@ export default function HomePage() {
 
       <section id="how-it-works" className="steps-section page-shell">
         <div className="section-intro"><p className="eyebrow">A clear first step</p><h2>Care that starts with listening.</h2></div>
-        <div className="step-grid">{steps.map(([number, text]) => <div className="step-card" key={number}><span>{number}</span><p>{text}</p></div>)}</div>
+        <div className="step-grid">{steps.map(([number, text], index) => <article className={`step-card step-card-${index + 1}`} key={number}><div className="step-scene" aria-hidden="true"><div className="step-object">{index === 0 && <><span className="object-orbit orbit-one" /><span className="object-orbit orbit-two" /><span className="object-core" /></>}{index === 1 && <><span className="object-profile" /><span className="object-ring" /><span className="object-spark">✦</span></>}{index === 2 && <><span className="object-path path-one" /><span className="object-path path-two" /><span className="object-sun" /></>}</div></div><span>{number}</span><p>{text}</p></article>)}</div>
       </section>
 
       <section id="care-team" className="trust-section page-shell">

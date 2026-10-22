@@ -52,6 +52,7 @@ export default function SignInPage() {
             {pending ? 'Signing in…' : 'Sign in'} <span aria-hidden="true">↗</span>
           </button>
         </form>
+        <p className="auth-switch">New to Doui? <a href="/sign-up">Create an account</a></p>
       </section>
     </main>
   );
