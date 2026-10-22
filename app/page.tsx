@@ -1,9 +1,17 @@
 import { DouiMark } from '../components/brand/DouiMark';
+import { therapists } from '../lib/mock-data';
 
 const steps = [
   ['01', 'Tell us what support could look like'],
   ['02', 'Explore people who match your needs'],
   ['03', 'Choose a pace and format that feels right'],
+];
+
+const verifiedTherapists = therapists.filter((therapist) => therapist.verified);
+const directoryMetrics = [
+  { value: verifiedTherapists.length, label: 'verified professionals', detail: 'in the current directory' },
+  { value: new Set(therapists.flatMap((therapist) => therapist.languages)).size, label: 'languages supported', detail: 'Arabic, French, and English' },
+  { value: new Set(therapists.flatMap((therapist) => therapist.formats)).size, label: 'session formats', detail: 'video, voice, and messaging' },
 ];
 
 export default function HomePage() {
@@ -25,6 +33,16 @@ export default function HomePage() {
           <div className="soft-arch"><DouiMark /></div>
           <div className="hero-note">A little support<br />can change the shape<br />of a hard day.</div>
         </div>
+      </section>
+
+      <section className="metrics-section page-shell" aria-labelledby="directory-metrics-title">
+        <div className="metrics-copy">
+          <p className="eyebrow">The directory, at a glance</p>
+          <h2 id="directory-metrics-title">A small, thoughtful place to begin.</h2>
+          <p>These numbers reflect the therapist profiles currently available in this MVP directory. We would only expand them as professionals are reviewed and added.</p>
+        </div>
+        <div className="metrics-orbit" aria-hidden="true"><span className="metrics-orbit-ring ring-a" /><span className="metrics-orbit-ring ring-b" /><span className="metrics-orbit-core"><DouiMark /></span></div>
+        <div className="metrics-grid">{directoryMetrics.map((metric) => <div className="metric-card" key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span><small>{metric.detail}</small></div>)}</div>
       </section>
 
       <section id="how-it-works" className="steps-section page-shell">
