@@ -1,0 +1,175 @@
+body {
+  background:
+    radial-gradient(circle at 8% 14%, rgba(216, 232, 222, .72), transparent 28rem),
+    radial-gradient(circle at 92% 44%, rgba(232, 137, 111, .1), transparent 25rem),
+    var(--cream);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  content: '';
+  opacity: .24;
+  background-image: radial-gradient(rgba(36, 51, 56, .16) .65px, transparent .65px);
+  background-size: 18px 18px;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+.cultural-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cultural-word {
+  position: absolute;
+  color: var(--teal);
+  opacity: .075;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.word-arabic {
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.word-tifinagh {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.arabic-one {
+  top: 17%;
+  left: 4%;
+  font-size: clamp(42px, 7vw, 100px);
+  transform: rotate(-12deg);
+}
+
+.arabic-two {
+  top: 56%;
+  right: 7%;
+  font-size: clamp(36px, 6vw, 82px);
+  color: var(--coral);
+  transform: rotate(9deg);
+}
+
+.arabic-three {
+  bottom: 11%;
+  left: 34%;
+  font-size: clamp(30px, 5vw, 68px);
+  transform: rotate(-5deg);
+}
+
+.tifinagh-one {
+  top: 8%;
+  right: 10%;
+  font-size: clamp(34px, 5vw, 76px);
+  transform: rotate(8deg);
+}
+
+.tifinagh-two {
+  top: 73%;
+  left: 5%;
+  font-size: clamp(26px, 4vw, 56px);
+  color: var(--coral);
+  transform: rotate(-8deg);
+}
+
+.tifinagh-three {
+  bottom: 5%;
+  right: 20%;
+  font-size: clamp(30px, 4vw, 62px);
+  transform: rotate(6deg);
+}
+
+.site-header {
+  position: sticky;
+  top: 12px;
+  z-index: 10;
+  border: 1px solid rgba(220, 228, 223, .8);
+  border-radius: 999px;
+  background: rgba(249, 245, 238, .76);
+  box-shadow: 0 10px 35px rgba(37, 70, 62, .06);
+  backdrop-filter: blur(16px);
+}
+
+.hero-art,
+.consent-card,
+.question-card,
+.result-card,
+.therapist-card,
+.dashboard-card,
+.profile-panel,
+.booking-card,
+.settings-list,
+.admin-table {
+  box-shadow: 0 20px 60px rgba(37, 70, 62, .08);
+}
+
+.hero-art {
+  transition: transform .5s ease, box-shadow .5s ease;
+}
+
+.hero-art:hover {
+  transform: translateY(-6px) rotate(.5deg);
+  box-shadow: 0 28px 70px rgba(37, 70, 62, .14);
+}
+
+.button,
+.option-button,
+.slot-button,
+.nav-cta {
+  transition: transform .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.button-primary:hover,
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(40, 90, 88, .18);
+}
+
+.therapist-card,
+.dashboard-card,
+.step-card {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.therapist-card:hover,
+.dashboard-card:not(.large):hover,
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px rgba(37, 70, 62, .1);
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    top: 6px;
+    margin: 0 12px;
+    padding: 16px 18px;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+
+  .nav-links a:not(.nav-cta) {
+    display: none;
+  }
+
+  .cultural-word {
+    opacity: .05;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
