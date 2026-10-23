@@ -35,6 +35,17 @@ npm run dev
 
 See [docs/authentication.md](docs/authentication.md) for auth setup and production hardening requirements. See [docs/compliance-morocco.md](docs/compliance-morocco.md) before handling real health data.
 
+## Scaling beyond the MVP
+
+The application is designed to run as multiple stateless Next.js instances, but production scaling requires shared infrastructure:
+
+- Use a managed PostgreSQL service with connection pooling (for example, PgBouncer or the provider's pooled connection URL). Keep direct and pooled database URLs separate for migrations.
+- Keep `NEXTAUTH_SECRET` identical across all instances. JWT sessions avoid per-instance session storage, but key rotation must be planned.
+- Put rate limiting and short-lived caching in a shared store such as Redis; an in-memory limiter is not safe when traffic is distributed across instances.
+- Send logs, request latency, database timings, and health failures to a central observability service.
+- Configure the load balancer to use `GET /api/health` as the readiness check. It returns `503` when the database is unavailable.
+- Keep booking and messaging behind server-side authorization, transactions, audit logging, and reviewed external providers before enabling them at scale.
+
 ## Current status
 
 The repository includes the PostgreSQL/Prisma data model, registration endpoint, credentials sign-in boundary, role-aware middleware, protected dashboard/admin routes, and the original demo UI. Booking and messaging remain disabled until their security and compliance integrations are implemented.
