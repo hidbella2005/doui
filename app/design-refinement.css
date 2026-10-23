@@ -908,6 +908,52 @@ body {
     var(--teal-dark);
 }
 
+.therapist-dashboard .dashboard-card h3 {
+  margin: 7px 0 18px;
+  font-size: 16px;
+  letter-spacing: -.02em;
+}
+
+.therapist-session-list {
+  grid-column: span 2;
+}
+
+.session-list {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.session-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+.session-row div {
+  display: grid;
+  gap: 5px;
+}
+
+.session-row strong {
+  font-size: 15px;
+}
+
+.session-row span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.session-row > span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #eef5f0;
+  color: var(--teal-dark);
+}
+
 .site-footer {
   max-width: 1216px;
   padding-top: 38px;
@@ -959,6 +1005,10 @@ body {
   .therapist-card,
   .dashboard-card {
     padding: 24px;
+  }
+
+  .therapist-session-list {
+    grid-column: auto;
   }
 
   .site-footer {

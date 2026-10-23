@@ -1,8 +1,11 @@
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { requireUser } from '../../lib/auth/guards';
+import { UserRole } from '@prisma/client';
 
 export default async function DashboardPage() {
   const user = await requireUser();
+  if (user.role === UserRole.THERAPIST) redirect('/therapist/dashboard');
   const firstName = user.name?.split(' ')[0] ?? 'there';
   return <main className="page-shell dashboard-page">
     <div className="dashboard-heading">
