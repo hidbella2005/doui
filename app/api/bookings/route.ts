@@ -7,8 +7,34 @@ import { requireUser } from '../../../lib/auth/guards';
 const bookingSchema = z.object({
   slotId: z.string().cuid(),
   format: z.nativeEnum(SessionFormat),
-  consentId: z.string().cuid(),
+  consentAccepted: z.literal(true),
 });
+
+const availabilityQuerySchema = z.object({
+  therapistId: z.string().min(1),
+});
+
+export async function GET(request: Request) {
+  const query = availabilityQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
+  if (!query.success) return NextResponse.json({ error: 'A therapist is required.' }, { status: 400 });
+
+  const therapist = await prisma.therapistProfile.findFirst({
+    where: {
+      OR: [{ id: query.data.therapistId }, { userId: query.data.therapistId }],
+      verificationStatus: 'VERIFIED',
+    },
+    select: { id: true, feeMad: true, formats: true },
+  });
+  if (!therapist) return NextResponse.json({ slots: [] });
+
+  const slots = await prisma.availabilitySlot.findMany({
+    where: { therapistId: therapist.id, status: 'AVAILABLE', startsAt: { gt: new Date() } },
+    orderBy: { startsAt: 'asc' },
+    take: 20,
+    select: { id: true, startsAt: true, endsAt: true, timezone: true },
+  });
+  return NextResponse.json({ slots, formats: therapist.formats, feeMad: therapist.feeMad }, { headers: { 'Cache-Control': 'private, max-age=30' } });
+}
 
 export async function POST(request: Request) {
   const user = await requireUser();
@@ -17,15 +43,14 @@ export async function POST(request: Request) {
   const parsed = bookingSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: 'Choose a valid slot, format, and consent record.' }, { status: 400 });
 
-  const { slotId, format, consentId } = parsed.data;
+  const { slotId, format } = parsed.data;
   const now = new Date();
   try {
     const booking = await prisma.$transaction(async (transaction) => {
-      const consent = await transaction.consentRecord.findFirst({
-        where: { id: consentId, userId: user.id, granted: true, withdrawnAt: null },
+      const consent = await transaction.consentRecord.create({
+        data: { userId: user.id, version: 'telehealth-v1', purpose: 'telehealth_booking', granted: true },
         select: { id: true },
       });
-      if (!consent) throw new BookingError('CONSENT_REQUIRED');
 
       const slot = await transaction.availabilitySlot.findFirst({
         where: {
