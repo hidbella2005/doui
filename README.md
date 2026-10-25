@@ -48,4 +48,4 @@ The application is designed to run as multiple stateless Next.js instances, but 
 
 ## Current status
 
-The repository includes the PostgreSQL/Prisma data model, registration endpoint, credentials sign-in boundary, role-aware middleware, protected dashboard/admin routes, and the original demo UI. Booking and messaging remain disabled until their security and compliance integrations are implemented.
+The repository includes the PostgreSQL/Prisma data model, registration endpoint, credentials sign-in boundary, role-aware middleware, protected client/therapist dashboards, and the original demo UI. Booking requests now require an authenticated client, active consent, a verified therapist, and an available future slot; payment confirmation and messaging remain disabled until their security and compliance integrations are implemented.
