@@ -44,6 +44,8 @@ The application is designed to run as multiple stateless Next.js instances, but 
 - Put rate limiting and short-lived caching in a shared store such as Redis; an in-memory limiter is not safe when traffic is distributed across instances.
 - Send logs, request latency, database timings, and health failures to a central observability service.
 - Configure the load balancer to use `GET /api/health` as the readiness check. It returns `503` when the database is unavailable.
+- Build with `npm run build` and deploy `.next/standalone`, `.next/static`, and `public`. The standalone output keeps the runtime image small and lets multiple instances start with the same artifact.
+- Serve `/_next/static/*` through a CDN or edge cache. These files are content-hashed and receive a one-year immutable cache policy.
 - Keep booking and messaging behind server-side authorization, transactions, audit logging, and reviewed external providers before enabling them at scale.
 
 ## Current status
