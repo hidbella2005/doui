@@ -1127,7 +1127,75 @@ body {
   transform: translate(-50%, -50%) rotateX(54deg) rotateZ(12deg) translateZ(12px) scale(1.08);
 }
 
+.directory-filters {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.6fr) repeat(3, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 28px 0 12px;
+  padding: 18px;
+  border: 1px solid rgba(37, 48, 45, 0.1);
+  border-radius: 22px;
+  background: rgba(255, 253, 248, 0.72);
+}
+
+.directory-filters label {
+  display: grid;
+  gap: 7px;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.directory-filters input,
+.directory-filters select {
+  min-width: 0;
+  border: 1px solid rgba(37, 48, 45, 0.16);
+  border-radius: 11px;
+  background: #fffdf8;
+  color: var(--ink);
+  font: inherit;
+  letter-spacing: normal;
+  padding: 11px 12px;
+  text-transform: none;
+}
+
+.directory-filters input:focus,
+.directory-filters select:focus {
+  outline: 3px solid rgba(216, 126, 100, 0.22);
+  border-color: var(--coral);
+}
+
+.directory-result-count {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin: 0 0 16px;
+}
+
+.directory-empty {
+  border: 1px dashed rgba(37, 48, 45, 0.2);
+  border-radius: 22px;
+  margin-top: 20px;
+  padding: 42px 24px;
+  text-align: center;
+}
+
+.directory-empty h2 {
+  margin: 0 0 8px;
+}
+
+.directory-empty p {
+  color: var(--ink-soft);
+  margin: 0 auto 20px;
+  max-width: 520px;
+}
+
 @media (max-width: 700px) {
+  .directory-filters {
+    grid-template-columns: 1fr;
+  }
+
   .step-card:hover {
     transform: translateY(-4px);
   }
