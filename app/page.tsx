@@ -19,6 +19,7 @@ export default function HomePage() {
     <main>
       <section className="hero page-shell">
         <div className="hero-copy">
+          <div className="welcome-kicker"><span className="welcome-dot" /> Doui care, made personal</div>
           <p className="eyebrow">A softer way to start</p>
           <h1>Make room for the life you want to feel.</h1>
           <p className="hero-text">Doui helps you find a verified therapist whose approach, language, and availability fit your real life.</p>
@@ -26,13 +27,29 @@ export default function HomePage() {
             <a className="button button-primary" href="/onboarding">Find your care fit <span aria-hidden="true">↗</span></a>
             <a className="text-link" href="#how-it-works">See how Doui works</a>
           </div>
-          <p className="microcopy">Private by design · You stay in control · Not an emergency service</p>
+          <div className="welcome-assurances" aria-label="Doui assurances">
+            <span><strong>01</strong>Private by design</span>
+            <span><strong>02</strong>You stay in control</span>
+            <span><strong>03</strong>Not an emergency service</span>
+          </div>
         </div>
         <div className="hero-art" aria-label="Illustration of two abstract overlapping shapes" role="img">
           <div className="sun-orb" />
           <div className="soft-arch"><DouiMark /></div>
           <div className="hero-note">A little support<br />can change the shape<br />of a hard day.</div>
+          <div className="hero-status-card">
+            <span className="status-label"><span className="status-pulse" /> Care team</span>
+            <strong>Find someone who gets your context.</strong>
+            <span className="status-detail">Arabic · French · English</span>
+            <a href="/therapists">Explore profiles <span aria-hidden="true">↗</span></a>
+          </div>
+          <div className="hero-floating-mark" aria-hidden="true">ⵣ</div>
         </div>
+      </section>
+
+      <section className="welcome-path page-shell" aria-label="Start with Doui">
+        <div className="welcome-path-intro"><span className="welcome-path-number">00</span><strong>Start where you are.</strong><span>There is no perfect way to ask for support.</span></div>
+        <a className="welcome-path-link" href="/onboarding">Take the 2-minute fit check <span aria-hidden="true">↗</span></a>
       </section>
 
       <section className="metrics-section page-shell" aria-labelledby="directory-metrics-title">
